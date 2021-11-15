@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import com.example.mobileauthentication.adapter.ProductAdapter;
 import com.example.mobileauthentication.databinding.ActivityProductsBinding;
 import com.example.mobileauthentication.model.Products;
+import com.example.mobileauthentication.utils.ProductsSelectedListener;
 import com.example.mobileauthentication.utils.Util;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductsActivity extends AppCompatActivity {
+public class ProductsActivity extends AppCompatActivity implements ProductsSelectedListener {
 
     ActivityProductsBinding binding;
     DatabaseReference databaseReference;
@@ -73,7 +74,7 @@ public class ProductsActivity extends AppCompatActivity {
                     productsList.add(products);
                 }
 
-                ProductAdapter adapter = new ProductAdapter(productsList, ProductsActivity.this);
+                ProductAdapter adapter = new ProductAdapter(productsList, ProductsActivity.this,ProductsActivity.this);
                 binding.rvProductsItems.setLayoutManager(new GridLayoutManager(ProductsActivity.this, 3));
                 binding.rvProductsItems.setAdapter(adapter);
             }
@@ -84,6 +85,11 @@ public class ProductsActivity extends AppCompatActivity {
                 Util.showToastMessage(ProductsActivity.this, databaseError.getMessage());
             }
         });
+
+    }
+
+    @Override
+    public void onItemSelected(Boolean isSelected) {
 
     }
 }

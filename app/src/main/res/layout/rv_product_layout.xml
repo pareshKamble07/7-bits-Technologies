@@ -7,13 +7,28 @@
     app:cardCornerRadius="5dp"
     app:cardElevation="5dp">
 
-
-    <ImageView
-        android:id="@+id/imgV_products"
-        android:layout_width="100dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:src="@mipmap/ic_launcher" />
+    <RelativeLayout
+        android:id="@+id/relative_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
+
+        <ImageView
+            android:id="@+id/imgV_products"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            />
+
+        <ImageView
+            android:id="@+id/imgV_checks"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_checkout"
+            android:layout_alignParentTop="true"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
 </androidx.cardview.widget.CardView>
